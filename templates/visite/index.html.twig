@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter - Bien{% endblock %}
+
+{% block head %}
+{{ parent() }}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <nav style="background-color:#7695ad;" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a style="color:#ffffff;" href="#">1</a></li>
+                    <li><a style="color:#ffffff;" href="#">2</a></li>
+                    <li><a style="color:#ffffff;" href="#">3</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a style="color:#ffffff;" href="#">Se déconnecter</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <center>
+        {{ form(form) }}
+    </center>
+</div>
+{% endblock %}
+
