@@ -14,19 +14,20 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a style="color:#ffffff;" href="#">1</a></li>
-                    <li><a style="color:#ffffff;" href="#">2</a></li>
-                    <li><a style="color:#ffffff;" href="#">3</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a style="color:#ffffff;" href="#">Se déconnecter</a></li>
+                    <li><a style="color:#ffffff;" href="/bien">Bien</a></li>
+                    <li><a style="color:#ffffff;" href="/type">Type</a></li>
+                    <li><a style="color:#ffffff;" href="/visiteur">Visiteur</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <center>
         {{ form(form) }}
+        <form action="/bien/consulter" Method="post">
+                <th><button>Consulter</button></th>
+        </form>
     </center>
 </div>
 {% endblock %}
+
 

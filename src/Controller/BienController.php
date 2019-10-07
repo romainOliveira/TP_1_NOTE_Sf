@@ -46,13 +46,13 @@ class BienController extends AbstractController
     public function updateBien(Request $request, Session $session, $id){
         
         $bien = new Bien();
-        $bien = $this->getDoctrine()->getManager()->getRepository(Bien::class)->findById($id);
+        $bien = $this->getDoctrine()->getManager()->getRepository(Bien::class)->find($id);
         //$id = $session->get('login');
         $request->getSession()->getFlashBag()->add('notice', '');
-        $form = $this->createForm(BienController::class, $bien);
+        $form = $this->createForm(BienType::class, $bien);
         if($request->isMethod('POST')){
             $form->handleRequest($request);
-                if($form->isValid()){
+                if($form->isSubmitted() && $form->isValid()){
                     $em = $this->getDoctrine()->getManager();
                     $em->flush();
                     $request->getSession()->getFlashBag()->add('success', 'Bien modifié avec succès.');
@@ -69,10 +69,27 @@ class BienController extends AbstractController
 *
 */
     public function consulterBien(){
+        $biens = $this->getDoctrine()->getRepository(\App\Entity\Bien::class)->findAll();
+        return $this->render('bien/consulter.html.twig',array('biens'=>$biens));
+         
+    }
+
+        /**
+*
+*@Route("/bien/supprimer/{id}",name="del_route")
+*
+*/
+    public function supprimerBien($id){
+        $biens = $this->getDoctrine()->getRepository(\App\Entity\Bien::class)->findAll();
+        $bien = $this->getDoctrine()->getManager()->getRepository(\App\Entity\Bien::class)->find($id);
+        $em = $this->getDoctrine()->getManager();
+                $em->remove($bien);
+                $em->flush();
         
-        return $this->render('bien/consulter.html.twig');
+        return $this->render('bien/consulter.html.twig',array('biens'=>$biens));
          
     }
     
 }
+
 

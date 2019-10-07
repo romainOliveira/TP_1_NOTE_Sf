@@ -45,7 +45,7 @@ class BienRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult()
         ;
-    }
+    } 
      
     public function findById($id)
     {
@@ -59,6 +59,7 @@ class BienRepository extends ServiceEntityRepository
         return $result
         ;
     }
+    
     
     */
 }

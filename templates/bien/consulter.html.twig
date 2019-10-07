@@ -2,11 +2,63 @@
 
 {% block title %}Modifier - Bien{% endblock %}
 
+
 {% block head %}
+    
 {{ parent() }}
+
 {% endblock %}
 
+
 {% block body %}
+    
+    <div class="container">
+    <nav style="background-color:#7695ad;" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a style="color:#ffffff;" href="/bien">Bien</a></li>
+                    <li><a style="color:#ffffff;" href="/type">Type</a></li>
+                    <li><a style="color:#ffffff;" href="/visiteur">Visiteur</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </div>
+    
+         <table style="width:75% ">
+             <thead >
+                <tr>
+                    <th>Nombre de piece</th>
+                    <th>Nombre de chambre</th>
+                    <th>Superficie</th>
+                    <th>Prix</th>
+                    <th>Nombre de chauffage</th>
+                    <th>Localisation</th>
+                </tr>
+            </thead>
+                
+    {% for bien in biens %}
+        
+             <tr>
+                <th>{{ bien.nbpiece }}</th>
+                <th>{{ bien.nbchambre }}</th>
+                <th>{{ bien.superficie }}</th>
+                <th>{{ bien.prix }}</th>
+                <th>{{ bien.chauffage }}</th>
+                <th>{{ bien.localisation }}</th>
+             <form action="/bien/update/{{ bien.id }}" Method="post">
+                <th><button>Modifier</button></th>
+             </form>
+             <form action="/bien/supprimer/{{ bien.id }}" Method="post">
+                <th><button>Supprimer</button></th>
+             </form>
+             </tr>  
+             
+    {% endfor %} 
+        </table>
 
 {% endblock %}
 

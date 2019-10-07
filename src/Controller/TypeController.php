@@ -28,7 +28,7 @@ class TypeController extends AbstractController
                 $em->persist($cat);
                 $em->flush();
 
-                return $this->redirectToRoute('cat', array('id' =>
+                return $this->redirectToRoute('type', array('id' =>
             $cat->getId()));
             }
         
